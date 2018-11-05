@@ -1,0 +1,14 @@
+C:\Users\FS\SkillShare\SkillShare.API\bin\Debug\netcoreapp2.1\SkillShare.API.deps.json
+C:\Users\FS\SkillShare\SkillShare.API\bin\Debug\netcoreapp2.1\SkillShare.API.runtimeconfig.json
+C:\Users\FS\SkillShare\SkillShare.API\bin\Debug\netcoreapp2.1\SkillShare.API.runtimeconfig.dev.json
+C:\Users\FS\SkillShare\SkillShare.API\bin\Debug\netcoreapp2.1\SkillShare.API.dll
+C:\Users\FS\SkillShare\SkillShare.API\bin\Debug\netcoreapp2.1\SkillShare.API.pdb
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.csprojAssemblyReference.cache
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.csproj.CoreCompileInputs.cache
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.RazorAssemblyInfo.cache
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.RazorAssemblyInfo.cs
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.AssemblyInfoInputs.cache
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.AssemblyInfo.cs
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.RazorTargetAssemblyInfo.cache
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.dll
+C:\Users\FS\SkillShare\SkillShare.API\obj\Debug\netcoreapp2.1\SkillShare.API.pdb
