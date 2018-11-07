@@ -8,9 +8,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SkillShare.API.Controllers
-{
+{   [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController:ControllerBase
@@ -44,6 +46,8 @@ namespace SkillShare.API.Controllers
 
         [HttpPost("login")]
        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto){
+             //throw new Exception("Computer says something wrong");
+
            var userFromRepo=await repo.Login(userForLoginDto.Username.ToLower(),userForLoginDto.Password);
            if(userFromRepo==null)
            return Unauthorized();
