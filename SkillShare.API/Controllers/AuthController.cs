@@ -12,7 +12,7 @@ using System;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SkillShare.API.Controllers
-{   [Authorize]
+{   
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController:ControllerBase
