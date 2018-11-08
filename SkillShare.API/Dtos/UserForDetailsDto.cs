@@ -1,21 +1,18 @@
 using System;
 using System.Collections.Generic;
+using SkillShare.API.Models;
 
-namespace SkillShare.API.Models
+namespace SkillShare.API.Dtos
 {
-    public class User
+    public class UserForDetailsDto
     {
-        public int Id { get; set; }
+         public int Id { get; set; }
 
         public string Username { get; set; }
 
-        public byte[] PasswordHash { get; set; }
-        
-        public byte[] PasswordSalt { get; set; }
-
         public string Skill { get; set; }
 
-        public DateTime JoiningDate {get;set;}
+        public int YearsOfExperience {get;set;}
 
         public DateTime Created { get; set; }
 
@@ -29,6 +26,8 @@ namespace SkillShare.API.Models
 
         public string Country {get;set;}
  
-        public ICollection<Photo> Photos {get;set;}
+       public string PhotoUrl { get; set; }
+
+       public ICollection<PhotosForDetailsDto> Photos {get;set;}
     }
 }

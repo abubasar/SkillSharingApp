@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http;
 
 namespace SkillShare.API.Helpers
@@ -8,6 +9,10 @@ namespace SkillShare.API.Helpers
           response.Headers.Add("Application-Error",message);
           response.Headers.Add("Access-Control-Expose-Headers","Application-Error");
           response.Headers.Add("Access-Control-Allow-Origin","*");
+        }
+        public static int CalculateAge(this DateTime theDateTime ){
+var YearsOfExperience=DateTime.Today.Year-theDateTime.Year;
+return YearsOfExperience;
         }
     }
 }
