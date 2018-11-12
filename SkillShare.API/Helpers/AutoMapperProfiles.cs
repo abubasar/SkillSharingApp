@@ -25,6 +25,7 @@ namespace SkillShare.API.Helpers
             });
              CreateMap<Photo,PhotosForDetailsDto>();
              CreateMap<UserForUpdateDto,User>();
+             CreateMap<UserForRegisterDto,User>();
         }
     }
 }

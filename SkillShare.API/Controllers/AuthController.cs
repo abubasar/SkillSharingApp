@@ -10,6 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 
 namespace SkillShare.API.Controllers
 {   
@@ -20,11 +21,13 @@ namespace SkillShare.API.Controllers
         private readonly IAuthRepository repo;
 
        private readonly IConfiguration Config;
+        private readonly IMapper mapper;
 
-        public AuthController(IAuthRepository repo,IConfiguration config )
+        public AuthController(IAuthRepository repo,IConfiguration config,IMapper mapper )
         {
             this.repo = repo;
             Config = config;
+            this.mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -35,13 +38,12 @@ namespace SkillShare.API.Controllers
                 if(await repo.UserExists(userForRegisterDto.Username)){
                     return BadRequest("User name already exists!");
                 }
-                var userToCreate=new User
-                {
-                    Username=userForRegisterDto.Username
-                };
+                //Map<destination>(source)
+                var userToCreate=mapper.Map<User>(userForRegisterDto);
 
                 var createdUser=await repo.Register(userToCreate,userForRegisterDto.Password);
-                return StatusCode(201);
+               var userToReturn=mapper.Map<UserForDetailsDto>(createdUser);
+               return CreatedAtRoute("GetUser",new{Controller="Users",id=createdUser.Id},userToReturn);
         }
 
         [HttpPost("login")]

@@ -32,10 +32,10 @@ namespace SkillShare.API.Controllers
               return Ok(usersToReturn );
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}",Name="GetUser")]
         public async Task<IActionResult> GetUser(int id){
             var user=await repo.GetUser(id);
-            var userToReturn=mapper. Map<UserForDetailsDto>(user);
+            var userToReturn=mapper.Map<UserForDetailsDto>(user);
             return Ok(userToReturn);
         }
         [HttpPut("{id}")]
