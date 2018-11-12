@@ -24,6 +24,7 @@ namespace SkillShare.API.Helpers
               opt.ResolveUsing(d=>d.JoiningDate.CalculateAge());
             });
              CreateMap<Photo,PhotosForDetailsDto>();
+             CreateMap<UserForUpdateDto,User>();
         }
     }
 }
