@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SkillShare.API.Helpers;
 using SkillShare.API.Models;
 
 namespace SkillShare.API.Data
@@ -12,8 +13,10 @@ namespace SkillShare.API.Data
 
          Task<bool> SaveAll();
 
-         Task<IEnumerable<User>> GetUsers();
+         Task<PagedList<User>> GetUsers(UserParams userParams);
 
          Task<User> GetUser(int id);
+
+         Task<Like> GetLike(int userId,int recipientId);
     }
 }

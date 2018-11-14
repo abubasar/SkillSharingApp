@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using SkillShare.API.Data;
 using SkillShare.API.Dtos;
 using SkillShare.API.Helpers;
+using SkillShare.API.Models;
 
 namespace SkillShare.API.Controllers
 {
@@ -28,10 +29,14 @@ namespace SkillShare.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers(){
-              var users=await repo.GetUsers();
+        public async Task<IActionResult> GetUsers([FromQuery] UserParams userParams){
+              var currentUserId=int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+              var userFromRepo=await repo.GetUser(currentUserId);
+              userParams.UserId=currentUserId;
+              var users=await repo.GetUsers(userParams);
               var usersToReturn=mapper.Map<IEnumerable<UserForListDto>>(users);
-              return Ok(usersToReturn );
+              Response.AddPagination(users.CurrentPage,users.PageSize,users.TotalCount,users.TotalPages);
+                 return Ok(usersToReturn);
         }
 
         [HttpGet("{id}",Name="GetUser")]
@@ -53,6 +58,37 @@ namespace SkillShare.API.Controllers
 
           throw new Exception($"Updating user {id} failed on save");
 
+
+        }
+
+        [HttpPost("{id}/like/{recipientId}")]
+
+        public async Task<IActionResult> LikeUser(int id,int recipientId){
+             if(id!=int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+          return Unauthorized();
+
+          var like=await repo.GetLike(id,recipientId);
+
+          if(like!=null)
+          return BadRequest("You already Follow this Guy");
+
+          if(await repo.GetUser(recipientId)==null)
+          return NotFound(); 
+
+          like=new Like
+          {
+             LikerId=id,
+             LikeeId=recipientId                   
+          };
+
+          repo.Add<Like>(like);
+
+          if(await repo.SaveAll())
+              return Ok();
+          return BadRequest("Failed to like User");
+
+
+           
 
         }
 
